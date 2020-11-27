@@ -15,6 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Api_Manager {
+    private static final String tag = Api_Manager.class.getSimpleName();
 
     private Context context;
     private RequestQueue queue;
@@ -39,10 +40,10 @@ public class Api_Manager {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.d("Response", "Volley Response: " + response.toString());
+                        Log.d(tag, "Volley Response: " + response.toString());
 
                         try {
-                            JSONArray JsonLamps = response.getJSONArray("");
+                            JSONArray JsonLamps = response.getJSONArray(""); // looking for which name to get.
 
                             for (int i = 0; i < JsonLamps.length(); i++) {
                                 HUE_Lamp lamp = new HUE_Lamp(JsonLamps.getJSONObject(i));
@@ -57,7 +58,7 @@ public class Api_Manager {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e("Error", error.getLocalizedMessage());
+                        Log.e(tag, error.getLocalizedMessage());
                         listener.onHUEError(new Error(error.getLocalizedMessage()));
                     }
                 }
