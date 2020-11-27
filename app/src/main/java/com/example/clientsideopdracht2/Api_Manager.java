@@ -10,6 +10,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,6 +26,9 @@ public class Api_Manager {
         this.queue = Volley.newRequestQueue(this.context);
     }
 
+    /**
+     * Gets the Json data and makes it into a Lamp object
+     */
     public void getHUE_Data() {
         final String url = "http://localhost:8000/api/newdeveloper/lights";
 
@@ -36,8 +40,15 @@ public class Api_Manager {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d("Response", "Volley Response: " + response.toString());
+
                         try {
-                            listener.onHUEAvailable(lamp);
+                            JSONArray JsonLamps = response.getJSONArray("");
+
+                            for (int i = 0; i < JsonLamps.length(); i++) {
+                                HUE_Lamp lamp = new HUE_Lamp(JsonLamps.getJSONObject(i));
+                                listener.onHUEAvailable(lamp);
+                            }
+
                         } catch (JSONException exception) {
                             exception.getMessage();
                         }
