@@ -49,6 +49,7 @@ public class Api_Manager {
                             for (int i = 0; i < JsonLamps.length(); i++) {
                                 HUE_Lamp lamp = new HUE_Lamp(JsonLamps.getJSONObject(i));
                                 listener.onHUEAvailable(lamp);
+                                Log.d(tag, lamp.toString());
                             }
 
                         } catch (JSONException exception) {
@@ -59,8 +60,8 @@ public class Api_Manager {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e(tag, error.getLocalizedMessage());
-                        listener.onHUEError(new Error(error.getLocalizedMessage()));
+                        Log.e(tag, error.toString());
+                        listener.onHUEError(new Error(error.toString()));
                     }
                 }
         );
