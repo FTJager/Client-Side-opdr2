@@ -44,7 +44,7 @@ public class Api_Manager {
                         Log.d(tag, "Volley Response: " + response.toString());
 
                         try {
-                            JSONArray JsonLamps = response.getJSONArray(""); // looking for which name to get.
+                            JSONArray JsonLamps = response.getJSONArray("Lights");
 
                             for (int i = 0; i < JsonLamps.length(); i++) {
                                 HUE_Lamp lamp = new HUE_Lamp(JsonLamps.getJSONObject(i));
