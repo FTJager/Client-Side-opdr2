@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,14 +26,13 @@ public class HUE_Adapter extends RecyclerView.Adapter<HUE_Adapter.LampHolder> {
     }
 
     class LampHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public final ImageView LampImageView;
+        public final TextView LampIdImageView;
 
-        /**
-         * change constructor for view
-         * @param itemView
-         * @param adapter
-         */
         public LampHolder (View itemView, HUE_Adapter adapter){
             super(itemView);
+            LampImageView = itemView.findViewById(R.id.LampImageView);
+            LampIdImageView = itemView.findViewById(R.id.LampTextView);
             itemView.setOnClickListener(this);
         }
 
@@ -58,15 +59,11 @@ public class HUE_Adapter extends RecyclerView.Adapter<HUE_Adapter.LampHolder> {
         return lampHolder;
     }
 
-    /**
-     * Add what needs to be shown in constructor to
-     * @param holder
-     * @param position
-     */
     @Override
     public void onBindViewHolder(@NonNull LampHolder holder, int position) {
         Log.d(tag, "onBindViewHolder() called for item: " + position);
         HUE_Lamp lamp = lamps.get(position);
+        holder.LampIdImageView.setText(lamp.getModelId());
     }
 
     @Override
