@@ -32,7 +32,7 @@ public class Api_Manager {
      * Gets the Json data and makes it into a Lamp object
      */
     public void getHUE_Data() {
-        final String url = "http://localhost:8000/api/newdeveloper/lights";
+        final String url = "http://10.0.2.2:8000/api/newdeveloper/lights";
 
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
@@ -44,13 +44,20 @@ public class Api_Manager {
                         Log.d(tag, "Volley Response: " + response.toString());
 
                         try {
-                            JSONArray JsonLamps = response.getJSONArray("Lights");
+                            JSONObject JsonLamp1 = response.getJSONObject("1");
+                            HUE_Lamp lamp = new HUE_Lamp(JsonLamp1);
+                            listener.onHUEAvailable(lamp);
+                            Log.d(tag, lamp.getModelId());
 
-                            for (int i = 0; i < JsonLamps.length(); i++) {
-                                HUE_Lamp lamp = new HUE_Lamp(JsonLamps.getJSONObject(i));
-                                listener.onHUEAvailable(lamp);
-                                Log.d(tag, lamp.toString());
-                            }
+                            JSONObject JsonLamp2 = response.getJSONObject("2");
+                            HUE_Lamp lamp2 = new HUE_Lamp(JsonLamp2);
+                            listener.onHUEAvailable(lamp2);
+                            Log.d(tag, lamp2.getModelId());
+
+                            JSONObject JsonLamp3 = response.getJSONObject("3");
+                            HUE_Lamp lamp3 = new HUE_Lamp(JsonLamp3);
+                            listener.onHUEAvailable(lamp3);
+                            Log.d(tag, lamp3.getModelId());
 
                         } catch (JSONException exception) {
                             exception.getMessage();
