@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.clientsideopdracht2.HUE_Lamp;
 import com.example.clientsideopdracht2.R;
 
 public class DetailActivity extends AppCompatActivity {

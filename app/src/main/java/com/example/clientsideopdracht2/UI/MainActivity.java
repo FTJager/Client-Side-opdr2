@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements HUE_Adapter.OnIte
     public void onItemClick(int clickedPosition) {
         Log.i(tag, "onItemClick() called for position " + clickedPosition);
         Intent detailIntent = new Intent(this, DetailActivity.class);
-        detailIntent.putExtra( , lamps.get(clickedPosition)); // finish this part
+
         startActivity(detailIntent);
     }
 

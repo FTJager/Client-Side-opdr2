@@ -13,7 +13,7 @@ import java.util.List;
 public class HUE_Lamp {
     private final static String log = HUE_Lamp.class.getSimpleName();
 
-    private int ModelId;
+    private String ModelId;
 
     private Boolean on;
     private Integer bri;
@@ -29,10 +29,9 @@ public class HUE_Lamp {
 
     public HUE_Lamp(JSONObject jsonObject) {
         try {
-            this.ModelId = jsonObject.getInt("modelid");
+            this.ModelId = jsonObject.getString("modelid");
 
-            this.on = jsonObject.getBoolean("on");
-            this.bri = jsonObject.getInt("bri");
+           /* this.bri = jsonObject.getInt("bri");
             this.hue = jsonObject.getInt("hue");
             this.sat = jsonObject.getInt("sat");
             this.effect = jsonObject.getString("effect");
@@ -42,9 +41,62 @@ public class HUE_Lamp {
             this.colormode = jsonObject.getString("colormode");
             this.mode = jsonObject.getString("mode");
             this.reachable = jsonObject.getBoolean("reachable");
+            this.on = jsonObject.getBoolean("on"); */
         } catch (JSONException exception) {
             Log.e(log, "Error with Json");
             exception.printStackTrace();
         }
+    }
+
+    public static String getLog() {
+        return log;
+    }
+
+    public String getModelId() {
+        return ModelId;
+    }
+
+    public Boolean getOn() {
+        return on;
+    }
+
+    public Integer getBri() {
+        return bri;
+    }
+
+    public Integer getHue() {
+        return hue;
+    }
+
+    public Integer getSat() {
+        return sat;
+    }
+
+    public String getEffect() {
+        return effect;
+    }
+
+    public List<Double> getXy() {
+        return xy;
+    }
+
+    public Integer getCt() {
+        return ct;
+    }
+
+    public String getAlert() {
+        return alert;
+    }
+
+    public String getColormode() {
+        return colormode;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public Boolean getReachable() {
+        return reachable;
     }
 }
