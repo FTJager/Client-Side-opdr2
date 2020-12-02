@@ -47,4 +47,48 @@ public class HUE_Lamp {
             exception.printStackTrace();
         }
     }
+
+    public Boolean getOn() {
+        return on;
+    }
+
+    public Integer getBri() {
+        return bri;
+    }
+
+    public Integer getHue() {
+        return hue;
+    }
+
+    public Integer getSat() {
+        return sat;
+    }
+
+    public String getEffect() {
+        return effect;
+    }
+
+    public List<Double> getXy() {
+        return xy;
+    }
+
+    public Integer getCt() {
+        return ct;
+    }
+
+    public String getAlert() {
+        return alert;
+    }
+
+    public String getColormode() {
+        return colormode;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public Boolean getReachable() {
+        return reachable;
+    }
 }
