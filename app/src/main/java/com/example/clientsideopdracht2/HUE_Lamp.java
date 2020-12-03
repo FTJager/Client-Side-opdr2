@@ -14,6 +14,7 @@ public class HUE_Lamp {
     private final static String log = HUE_Lamp.class.getSimpleName();
 
     private String ModelId;
+    private String name;
 
     private Boolean on;
     private Integer bri;
@@ -30,6 +31,7 @@ public class HUE_Lamp {
     public HUE_Lamp(JSONObject jsonObject) {
         try {
             this.ModelId = jsonObject.getString("modelid");
+            this.name = jsonObject.getString("name");
 
            /* this.bri = jsonObject.getInt("bri");
             this.hue = jsonObject.getInt("hue");
@@ -46,6 +48,10 @@ public class HUE_Lamp {
             Log.e(log, "Error with Json");
             exception.printStackTrace();
         }
+    }
+
+    public String getName() {
+        return name;
     }
 
     public static String getLog() {
