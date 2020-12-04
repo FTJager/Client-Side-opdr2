@@ -5,25 +5,26 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class HUE_LampTest {
-    JSONObject lampJSON = new JSONObject();
-    JSONObject state = new JSONObject();
+    JSONObject lampJSON = Mockito.mock(JSONObject.class);
+    JSONObject state = Mockito.mock(JSONObject.class);
 
     @BeforeEach
     void setUp() {
         try {
             state.put("on", false);
-            state.put("bri", false);
-            state.put("hue", false);
-            state.put("sat", false);
-            state.put("effect", false);
-            state.put("ct", false);
-            state.put("alert", false);
-            state.put("colormode", false);
-            state.put("reachable", false);
+            state.put("bri", 1);
+            state.put("hue", 10000);
+            state.put("sat", 254);
+            state.put("effect", "none");
+            state.put("ct", 159);
+            state.put("alert", "none");
+            state.put("colormode", "xy");
+            state.put("reachable", true);
             lampJSON.put("state", state);
             lampJSON.put("modelid", "LCT007");
             lampJSON.put("name", "Hue color lamp 1");
