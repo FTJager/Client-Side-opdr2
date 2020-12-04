@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.view.menu.MenuView;
@@ -39,10 +40,12 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailHold
     }
 
     class DetailHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private TextView detailTextView;
 
         public DetailHolder(View itemview, DetailAdapter adapter){
             super(itemview);
             itemview.setOnClickListener(this);
+            this.detailTextView = itemview.findViewById(R.id.detailTextView);
         }
 
         @Override
@@ -70,6 +73,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailHold
     public void onBindViewHolder(@NonNull DetailHolder holder, int position) {
         Log.d(tag, "onBindViewHolder() called for item: " + position);
         String text = lampStats.get(position);
+        holder.detailTextView.setText(text);
     }
 
     @Override
