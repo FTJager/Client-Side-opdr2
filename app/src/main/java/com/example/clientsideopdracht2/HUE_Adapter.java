@@ -27,12 +27,12 @@ public class HUE_Adapter extends RecyclerView.Adapter<HUE_Adapter.LampHolder> {
 
     class LampHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public final ImageView LampImageView;
-        public final TextView LampIdImageView;
+        public final TextView lampTextView;
 
         public LampHolder (View itemView, HUE_Adapter adapter){
             super(itemView);
             LampImageView = itemView.findViewById(R.id.LampImageView);
-            LampIdImageView = itemView.findViewById(R.id.LampTextView);
+            lampTextView = itemView.findViewById(R.id.LampTextView);
             itemView.setOnClickListener(this);
         }
 
@@ -63,9 +63,12 @@ public class HUE_Adapter extends RecyclerView.Adapter<HUE_Adapter.LampHolder> {
     public void onBindViewHolder(@NonNull LampHolder holder, int position) {
         Log.d(tag, "onBindViewHolder() called for item: " + position);
         HUE_Lamp lamp = lamps.get(position);
-        Log.d(tag, lamp.getName());
-        holder.LampIdImageView.setText(lamp.getName());
-    }
+            if(lamp.getName() != null) {
+              holder.lampTextView.setText(lamp.getName());
+            }else{
+            Log.d(tag, lamp.getName());
+            }
+        }
 
     @Override
     public int getItemCount() {
