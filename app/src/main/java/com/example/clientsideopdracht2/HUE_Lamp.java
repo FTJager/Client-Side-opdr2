@@ -15,8 +15,10 @@ public class HUE_Lamp implements Serializable {
 
     private String name = "lamp";
     private State state;
+    private int id;
 
-    public HUE_Lamp(JSONObject jsonObject) {
+    public HUE_Lamp(JSONObject jsonObject, int id) {
+        this.id = id;
         try {
             this.name = jsonObject.getString("name");
             this.state = new State(jsonObject.getJSONObject("state"));
@@ -24,6 +26,10 @@ public class HUE_Lamp implements Serializable {
             Log.e(tag, "Error with Json");
             exception.printStackTrace();
         }
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
