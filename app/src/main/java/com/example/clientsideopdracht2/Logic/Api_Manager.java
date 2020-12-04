@@ -11,9 +11,11 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.clientsideopdracht2.HUE_Lamp;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Api_Manager {
     private static final String tag = Api_Manager.class.getSimpleName();
@@ -70,5 +72,65 @@ public class Api_Manager {
                 }
         );
         this.queue.add(request);
+    }
+
+    public void changeOnOff(String id, Boolean status) {
+        final String url = "http://10.0.2.2:8000/api/newdeveloper/light/" + id + "/state";
+
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.PUT,
+                url,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(tag, response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e(tag, error.toString());
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("on", String.valueOf(status));
+                return params;
+            }
+        };
+        queue.add(request);
+    }
+
+    public void changeColor (String id, int hue) {
+        final String url = "http://10.0.2.2:8000/api/newdeveloper/light/" + id + "/state";
+
+        final JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.PUT,
+                url,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(tag, response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e(tag, error.toString());
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("on", String.valueOf(hue));
+                return params;
+            }
+        };
+        queue.add(request);
     }
 }
