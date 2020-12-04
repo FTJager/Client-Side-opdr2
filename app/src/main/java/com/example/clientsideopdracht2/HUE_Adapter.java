@@ -26,13 +26,13 @@ public class HUE_Adapter extends RecyclerView.Adapter<HUE_Adapter.LampHolder> {
     }
 
     class LampHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public final ImageView LampImageView;
+        public final ImageView lampImageView;
         public final TextView lampTextView;
 
         public LampHolder (View itemView, HUE_Adapter adapter){
             super(itemView);
-            LampImageView = itemView.findViewById(R.id.LampImageView);
-            lampTextView = itemView.findViewById(R.id.LampTextView);
+            this.lampImageView = itemView.findViewById(R.id.lampImageView);
+            this.lampTextView = itemView.findViewById(R.id.lampTextView);
             itemView.setOnClickListener(this);
         }
 
@@ -54,7 +54,7 @@ public class HUE_Adapter extends RecyclerView.Adapter<HUE_Adapter.LampHolder> {
     @Override
     public LampHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.d(tag, "onCreateViewHolder() called");
-        View itemview = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_detail, parent, false);
+        View itemview = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_hue__lamp__item, parent, false);
         LampHolder lampHolder = new LampHolder(itemview, this);
         return lampHolder;
     }

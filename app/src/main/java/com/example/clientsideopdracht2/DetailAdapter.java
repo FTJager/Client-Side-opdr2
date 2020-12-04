@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailHolder> {
@@ -26,13 +27,16 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailHold
         this.context = context;
         this.lamp = lamp;
         this.itemClickListener = itemClickListener;
+        this.lampStats = new ArrayList<>();
+
+        Log.d(tag, lamp.getState().getOn().toString());
 
         lampStats.add("on: " + lamp.getState().getOn().toString());
         lampStats.add("Brightness: " + lamp.getState().getBri().toString());
         lampStats.add("Hue: " + lamp.getState().getHue().toString());
         lampStats.add("Saturation: " + lamp.getState().getSat().toString());
         lampStats.add("Effect: " + lamp.getState().getEffect());
-        lampStats.add("XY: " + lamp.getState().getXy().toString());
+        //lampStats.add("XY: " + lamp.getState().getXy().toString());
         lampStats.add("Mired colour temperature: " + lamp.getState().getCt().toString());
         lampStats.add("Alert: " + lamp.getState().getAlert());
         lampStats.add("Colour mode: " + lamp.getState().getColormode());
@@ -64,7 +68,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailHold
     @Override
     public DetailHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.d(tag, "onCreateViewHolder() called");
-        View itemview = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_detail, parent, false);
+        View itemview = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_detail_item, parent, false);
         DetailHolder detailHolder = new DetailHolder(itemview, this);
         return detailHolder;
     }

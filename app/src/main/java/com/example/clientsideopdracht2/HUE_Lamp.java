@@ -5,10 +5,12 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * Makes an instance of the HUE_Lamp
  */
-public class HUE_Lamp {
+public class HUE_Lamp implements Serializable {
     private final static String tag = HUE_Lamp.class.getSimpleName();
 
     private String name = "lamp";
