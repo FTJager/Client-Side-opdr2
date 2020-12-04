@@ -28,8 +28,8 @@ public class HUE_Lamp implements Serializable {
         }
     }
 
-    public int getId() {
-        return id;
+    public String getId() {
+        return String.valueOf(id);
     }
 
     public String getName() {

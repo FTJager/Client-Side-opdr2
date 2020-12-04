@@ -5,10 +5,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.view.menu.MenuView;
+import androidx.core.widget.CompoundButtonCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -22,12 +24,14 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailHold
     private HUE_Lamp lamp;
     private OnItemClickListener itemClickListener;
     private List<String> lampStats;
+    private CompoundButton.OnCheckedChangeListener checkedChangeListener;
 
-    public DetailAdapter(Context context, HUE_Lamp lamp, OnItemClickListener itemClickListener){
+    public DetailAdapter(Context context, HUE_Lamp lamp){
         this.context = context;
         this.lamp = lamp;
         this.itemClickListener = itemClickListener;
         this.lampStats = new ArrayList<>();
+        //this.checkedChangeListener = checkedChangeListener;
 
         Log.d(tag, lamp.getState().getOn().toString());
 
@@ -62,6 +66,10 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailHold
 
     public interface OnItemClickListener {
         void onItemClick(int clickedPosition);
+    }
+
+    public interface OnCheckedChangeListener{
+        void onCheckChanged(CompoundButtonCompat buttonCompat, boolean isChecked);
     }
 
     @NonNull

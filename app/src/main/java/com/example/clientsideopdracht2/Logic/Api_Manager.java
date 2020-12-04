@@ -75,7 +75,7 @@ public class Api_Manager {
     }
 
     public void changeOnOff(String id, Boolean status) {
-        final String url = "http://10.0.2.2:8000/api/newdeveloper/light/" + id + "/state";
+        final String url = "http://10.0.2.2:8000/api/newdeveloper/lights/" + id + "/state";
 
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.PUT,
@@ -105,7 +105,7 @@ public class Api_Manager {
     }
 
     public void changeColor (String id, int hue) {
-        final String url = "http://10.0.2.2:8000/api/newdeveloper/light/" + id + "/state";
+        final String url = "http://10.0.2.2:8000/api/newdeveloper/lights/" + id + "/state";
 
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.PUT,
