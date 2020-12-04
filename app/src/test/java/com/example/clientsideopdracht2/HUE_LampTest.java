@@ -11,20 +11,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class HUE_LampTest {
     JSONObject lampJSON = Mockito.mock(JSONObject.class);
-    JSONObject state = Mockito.mock(JSONObject.class);
+    JSONObject stateJSON = Mockito.mock(JSONObject.class);
 
     @BeforeEach
     void setUp() {
         try {
-            state.put("on", false);
-            state.put("bri", 1);
-            state.put("hue", 10000);
-            state.put("sat", 254);
-            state.put("effect", "none");
-            state.put("ct", 159);
-            state.put("alert", "none");
-            state.put("colormode", "xy");
-            state.put("reachable", true);
+            stateJSON.put("on", false);
+            stateJSON.put("bri", 1);
+            stateJSON.put("hue", 10000);
+            stateJSON.put("sat", 254);
+            stateJSON.put("effect", "none");
+            stateJSON.put("ct", 159);
+            stateJSON.put("alert", "none");
+            stateJSON.put("colormode", "xy");
+            stateJSON.put("reachable", true);
+            State state = new State(stateJSON);
             lampJSON.put("state", state);
             lampJSON.put("modelid", "LCT007");
             lampJSON.put("name", "Hue color lamp 1");
@@ -36,7 +37,7 @@ class HUE_LampTest {
     @Test
     void getId() {
         final HUE_Lamp lamp = new HUE_Lamp(lampJSON, 2);
-        assertEquals(2, 2);
+        assertEquals(2, lamp.getId());
     }
 
     @Test
@@ -48,6 +49,6 @@ class HUE_LampTest {
     @Test
     void getState() {
         final HUE_Lamp lamp = new HUE_Lamp(lampJSON, 2);
-        assertEquals(state, lamp.getState());
+        assertEquals(stateJSON, lamp.getState());
     }
 }
