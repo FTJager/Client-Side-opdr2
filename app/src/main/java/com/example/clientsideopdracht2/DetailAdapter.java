@@ -26,17 +26,16 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailHold
         this.lamp = lamp;
         this.itemClickListener = itemClickListener;
 
-        lampStats.add("on: " + lamp.getOn().toString());
-        lampStats.add("Brightness: " + lamp.getBri().toString());
-        lampStats.add("Hue: " + lamp.getHue().toString());
-        lampStats.add("Saturation: " + lamp.getSat().toString());
-        lampStats.add("Effect: " + lamp.getEffect());
-        lampStats.add("XY: " + lamp.getXy().toString());
-        lampStats.add("Mired colour temperature: " + lamp.getCt().toString());
-        lampStats.add("Alert: " + lamp.getAlert());
-        lampStats.add("Colour mode: " + lamp.getColormode());
-        lampStats.add("Mode: " + lamp.getMode());
-        lampStats.add("Reachable: " + lamp.getReachable().toString());
+        lampStats.add("on: " + lamp.getState().getOn().toString());
+        lampStats.add("Brightness: " + lamp.getState().getBri().toString());
+        lampStats.add("Hue: " + lamp.getState().getHue().toString());
+        lampStats.add("Saturation: " + lamp.getState().getSat().toString());
+        lampStats.add("Effect: " + lamp.getState().getEffect());
+        lampStats.add("XY: " + lamp.getState().getXy().toString());
+        lampStats.add("Mired colour temperature: " + lamp.getState().getCt().toString());
+        lampStats.add("Alert: " + lamp.getState().getAlert());
+        lampStats.add("Colour mode: " + lamp.getState().getColormode());
+        lampStats.add("Reachable: " + lamp.getState().getReachable().toString());
     }
 
     class DetailHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
