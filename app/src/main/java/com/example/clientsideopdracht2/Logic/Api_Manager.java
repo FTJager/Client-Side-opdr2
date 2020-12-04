@@ -47,17 +47,14 @@ public class Api_Manager {
                             JSONObject JsonLamp1 = response.getJSONObject("1");
                             HUE_Lamp lamp = new HUE_Lamp(JsonLamp1);
                             listener.onHUEAvailable(lamp);
-                            Log.d(tag, lamp.getModelId());
 
                             JSONObject JsonLamp2 = response.getJSONObject("2");
                             HUE_Lamp lamp2 = new HUE_Lamp(JsonLamp2);
                             listener.onHUEAvailable(lamp2);
-                            Log.d(tag, lamp2.getModelId());
 
                             JSONObject JsonLamp3 = response.getJSONObject("3");
                             HUE_Lamp lamp3 = new HUE_Lamp(JsonLamp3);
                             listener.onHUEAvailable(lamp3);
-                            Log.d(tag, lamp3.getModelId());
 
                         } catch (JSONException exception) {
                             exception.getMessage();
