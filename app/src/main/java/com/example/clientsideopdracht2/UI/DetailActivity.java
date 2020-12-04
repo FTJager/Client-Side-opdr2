@@ -35,4 +35,5 @@ public class DetailActivity extends AppCompatActivity implements DetailAdapter.O
     public void onItemClick(int clickedPosition) {
         Log.i(tag, "onItemClick() called for position: " + clickedPosition);
     }
+
 }
