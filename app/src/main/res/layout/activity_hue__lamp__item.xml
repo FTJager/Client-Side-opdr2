@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Hue_Lamp_Item">
+    android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/LampImageView"
+        android:id="@+id/lampImageView"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:background="@android:color/darker_gray"
@@ -17,13 +16,13 @@
         app:srcCompat="@drawable/philips_lamp" />
 
     <TextView
-        android:id="@+id/LampTextView"
+        android:id="@+id/lampTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/black"
         android:text="TextView"
         android:textColor="@android:color/white"
         android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/LampImageView"
-        app:layout_constraintEnd_toEndOf="@+id/LampImageView" />
+        app:layout_constraintBottom_toBottomOf="@+id/lampImageView"
+        app:layout_constraintEnd_toEndOf="@+id/lampImageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

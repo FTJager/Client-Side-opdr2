@@ -5,9 +5,10 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class State {
+public class State implements Serializable {
     private final static String tag = State.class.getSimpleName();
 
     private Boolean on;

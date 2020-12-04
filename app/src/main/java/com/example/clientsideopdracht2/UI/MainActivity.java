@@ -14,6 +14,7 @@ import com.example.clientsideopdracht2.Logic.Api_Manager;
 import com.example.clientsideopdracht2.Logic.HUE_Listener;
 import com.example.clientsideopdracht2.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements HUE_Adapter.OnItemClickListener, HUE_Listener {
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements HUE_Adapter.OnIte
     public void onItemClick(int clickedPosition) {
         Log.i(tag, "onItemClick() called for position " + clickedPosition);
         Intent detailIntent = new Intent(this, DetailActivity.class);
-
+        detailIntent.putExtra(DetailActivity.EXTRA_HUE, lamps.get(clickedPosition));
         startActivity(detailIntent);
     }
 
