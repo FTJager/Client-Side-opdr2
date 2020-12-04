@@ -3,14 +3,17 @@ package com.example.clientsideopdracht2.Logic;
 import android.content.Context;
 import android.util.Log;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.clientsideopdracht2.HUE_Lamp;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,15 +50,15 @@ public class Api_Manager {
 
                         try {
                             JSONObject JsonLamp1 = response.getJSONObject("1");
-                            HUE_Lamp lamp = new HUE_Lamp(JsonLamp1);
+                            HUE_Lamp lamp = new HUE_Lamp(JsonLamp1, 1);
                             listener.onHUEAvailable(lamp);
 
                             JSONObject JsonLamp2 = response.getJSONObject("2");
-                            HUE_Lamp lamp2 = new HUE_Lamp(JsonLamp2);
+                            HUE_Lamp lamp2 = new HUE_Lamp(JsonLamp2, 2);
                             listener.onHUEAvailable(lamp2);
 
                             JSONObject JsonLamp3 = response.getJSONObject("3");
-                            HUE_Lamp lamp3 = new HUE_Lamp(JsonLamp3);
+                            HUE_Lamp lamp3 = new HUE_Lamp(JsonLamp3, 3);
                             listener.onHUEAvailable(lamp3);
 
                         } catch (JSONException exception) {
@@ -75,12 +78,18 @@ public class Api_Manager {
     }
 
     public void changeOnOff(String id, Boolean status) {
-        final String url = "http://10.0.2.2:8000/api/newdeveloper/light/" + id + "/state";
+        final String url = "http://10.0.2.2:8000/api/newdeveloper/lights/" + id + "/state";
+        JSONObject body = new JSONObject();
+        try {
+            body.put("on", status);
+        } catch (JSONException exception) {
+            exception.printStackTrace();
+        }
 
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.PUT,
                 url,
-                null,
+                body,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -94,23 +103,23 @@ public class Api_Manager {
                     }
                 }
         ) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("on", String.valueOf(status));
-                return params;
-            }
         };
         queue.add(request);
     }
 
     public void changeColor (String id, int hue) {
-        final String url = "http://10.0.2.2:8000/api/newdeveloper/light/" + id + "/state";
+        final String url = "http://10.0.2.2:8000/api/newdeveloper/lights/" + id + "/state";
+        JSONObject body = new JSONObject();
+        try {
+            body.put("hue", hue);
+        } catch (JSONException exception) {
+            exception.printStackTrace();
+        }
 
         final JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.PUT,
                 url,
-                null,
+                body,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -124,12 +133,6 @@ public class Api_Manager {
                     }
                 }
         ) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("on", String.valueOf(hue));
-                return params;
-            }
         };
         queue.add(request);
     }
