@@ -70,19 +70,21 @@ public class DetailActivity extends AppCompatActivity implements HUE_Listener {
     public void onItemClick(View v) {
         Log.i(tag, "weeeeeeeeeeeeeeeeeeeee onItemClick");
         int hue = new Random().nextInt();
-        api.changeColor(lamp.getId() ,56536);
+        api.changeColor(lamp.getId() ,hue);
+        adapter.notifyDataSetChanged();
     }
 
 
     public void onCheckChanged(CompoundButton buttonView, boolean isChecked) {
         Log.i(tag, "weeeeeeeeeeeeeeeeeeeee oncheckChanged");
         api.changeOnOff(lamp.getId(), isChecked);
+        adapter.notifyDataSetChanged();
     }
 
 
     @Override
     public void onHUEAvailable(HUE_Lamp lamp) {
-
+        this.adapter.notifyDataSetChanged();
     }
 
     @Override
